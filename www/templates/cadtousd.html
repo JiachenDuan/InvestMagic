@@ -1,0 +1,50 @@
+<ion-view view-title="Smart Canadian Shopper">
+    <ion-content>
+        <p class="label item-input ">
+            <span class="span-currency-rate" ng-click="getUSDtoCADCurrency()">USD to CAD Rate:  {{ UsdToCadRate }}  </span>
+        </p>
+
+        <form class="list list-inset" ng-submit="submit()">
+
+            <label class="item item-input ">
+                <span class="input-label">CAD price: $</span>
+                <input type="text" placeholder="Input the before tax price"
+                       required ng-model="price.pricebeforetax  " ng-change="testngchange()">
+            </label>
+
+
+
+        </form>
+
+
+
+        <p class="label item-input">
+            After {{taxRate.CADTaxRate | FloatToPercentage}}% Tax in CAD:&nbsp<span class="span-aftertaxcad">{{ price.afterTaxCAD| currency}} </span>
+        </p>
+        <div class="range range-energized" >
+
+            Tax:<input type="range" min='0' max= '0.3' step= '.01' ng-model="taxRate.CADTaxRate"  ng-change="testngchange()" ng-click="closekeyboardonrange()"/>
+
+        </div>
+        <p class="label item-input">
+            Before Tax in USD:&nbsp<span class="span-beforetaxusd">{{ price.usdBeforeTax | currency}} </span>
+        </p>
+
+        <div class="range range-energized">
+
+           Tax:<input type="range"  min='0' max='0.3'  step= '.01' ng-model="taxRate.USDTaxRate" ng-change="testngchange()" ng-click="closekeyboardonrange()"/>
+
+        </div>
+
+
+        <p class="label item-input">
+            After {{taxRate.USDTaxRate | FloatToPercentage}}% Tax in USD:&nbsp <span class="span-aftertaxusd">{{price.usdAfterTax | currency}} </span>
+        </p>
+<div>
+    <p class="label item-input">
+        <span class="span-suggestion" ng-show="price.pricebeforetax">If the item before tax price in US is lower than {{ price.usdBeforeTax | currency }} USD, then it's cheaper to buy it in US ;) </span>
+    </p>
+</div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,67 @@
+<ion-view view-title="Magic Of Invest">
+    <ion-content>
+
+        <form class="list list-inset" ng-submit="submit()">
+
+            <label class="item item-input ">
+                <span class="input-label">Invest Amount: $</span>
+                <input type="text" placeholder="input 10,000 as $10,000 invest"
+                       required ng-model="$parent.investAmount " ng-change="testngchange()"  ng-model-options="{  debounce: {'default': 1000, 'blur': 0}  }">
+            </label>
+
+
+            <label class="item item-input ">
+                <span class="input-label">Return Ratio: %</span>
+                <input type="text" placeholder="input 10 as 10% return ratio"
+                       required ng-model="$parent.returnRatio" ng-change="testngchange()"  ng-model-options="{  debounce: {'default': 1000, 'blur': 0}  }">
+            </label>
+
+            <label class="item item-input ">
+                <span class="input-label">Number of Years:</span>
+                <input type="text" placeholder="input number of years"
+                       required ng-model="$parent.years" ng-change="testngchange()"  ng-model-options="{  debounce: {'default': 1000, 'blur': 0}  }">
+            </label>
+
+            <li class="item item-checkbox">
+                <label class="checkbox">
+                    <input type="checkbox" ng-model="checkAdvance.checked">
+                </label>
+                Advance Options
+            </li>
+            <label class="item item-input " ng-show="checkAdvance.checked">
+                <span class="input-label">Add more invest every year:</span>
+                <input type="text" placeholder="input 10,000 as $10,000 invest"
+                       required ng-model="$parent.addmoreinvest" ng-change="testngchange()"  ng-model-options="{  debounce: {'default': 1000, 'blur': 0}  }">
+            </label>
+
+        </form>
+
+
+        <div class="row" ng-repeat="curinvest in invests">
+
+      <span class="col" ng-repeat="invest in curinvest">
+        <p class="">
+            <span class="year-span">Year {{invest.year}}</span>
+
+        </p>
+
+        <p class="">
+            <span class="">{{invest.amount | currency}} </span>
+        </p>
+
+          <p class="more-invest-amount" ng-show="checkAdvance.checked">
+                <span class="">{{invest.moreInvestAmount | currency}} </span>
+          </p>
+
+          <p class="total-invest-amount" ng-show="checkAdvance.checked">
+              <span class="">{{invest.totalInvestAmount | currency}} </span>
+          </p>
+        <p class="">
+            <span class="">{{invest.ratio}}%</span>
+        </p>
+
+
+      </span>
+        </div>
+    </ion-content>
+</ion-view>

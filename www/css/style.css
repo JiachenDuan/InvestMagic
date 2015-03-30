@@ -1,0 +1,41 @@
+/* Empty. Add your own CSS if you like */
+.col {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #ddd;
+    border-radius: 2px;
+    background: #f7f7f7;
+    text-align: center;
+}
+
+.item:first-child {
+    border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+
+}
+.more-invest-amount {
+    color:green;
+}
+
+.total-invest-amount {
+    color:blue;
+}
+.span-currency-rate {
+    color:green;
+}
+
+.span-aftertaxcad {
+    color:blue;
+}
+
+.span-beforetaxusd {
+    color:green;
+}
+
+.span-suggestion{
+    color:dimgray;
+}
+
+.span-aftertaxusd {
+    color:darkmagenta;
+}
